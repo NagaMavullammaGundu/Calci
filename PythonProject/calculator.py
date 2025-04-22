@@ -1,36 +1,37 @@
 def operations(sign ,num1 = 0,num2 = 0):
     if sign == '+':
-        result = num1 + num2
-        return result
+        return num1 + num2
     elif sign == '-':
-        result = num1 - num2
-        return result
+        return num1 - num2
     elif sign == '*':
-        result = num1 * num2
-        return result
+        return num1 * num2
     elif sign == '%': #remainder
-        result = num1 % num2
-        return result
+        return num1 % num2
     elif sign == '/': #Quotient
-        result = num1 / num2
-        return result
-    else:
-        result = num1
-        return result
+        if num2 == 0 :
+            return "Divide by zero is not possible."
 
+        else:
+            return num1 / num2
 
-signslist = ['+','-','*','%','/']
-num1 = int(input("Enter number:"))
-sign = input("Enter sign :")
-
-if sign in signslist:
-    while sign in signslist:
-        num2 = int(input("Enter number:"))
-        updated_result = (operations(sign, num1, num2))
-        num1 = updated_result
+def calci():
+    signslist = ['+','-','*','%','/']
+    try :
+        num1 = float(input("Enter number:"))
         sign = input("Enter sign :")
-        if sign == '=':
+
+        if sign in signslist:
+            while sign in signslist:
+                num2 = float(input("Enter number:"))
+                updated_result = (operations(sign, num1, num2))
+                num1 = updated_result
+                sign = input("Enter sign :")
             print(updated_result)
+        else:
+            print("Invalid Symbol")
+    except ValueError:
+        print("Invalid number entered.")
 
-
+if __name__ == '__main__':
+    calci()
 
